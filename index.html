@@ -52,7 +52,7 @@
     <nav class="bg-custom-blue text-white p-4 fixed w-full z-50">
         <div class="container mx-auto flex justify-between items-center">
             <div class="text-2xl font-bold">DevSphere</div>
-            <a href="https://linkedin.com/your-profile" target="_blank" 
+            <a href="https://www.linkedin.com/in/abdullrahman-eissa" target="_blank" 
                class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded transition duration-300">
                 LinkedIn Profile
             </a>
@@ -139,19 +139,15 @@
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Here you would normally send this to your server
-            // For demo, we'll just show a success message
+            // Collect form data
             const formData = new FormData(this);
             
-            // You would replace this with your actual email service
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                interest: formData.get('interest'),
-                suggestions: formData.get('suggestions')
-            });
-
-            alert('Thank you for registering! Your access code is: DEV-2024-001');
+            // Send email using emailjs or your preferred service
+            // Example: Send to your email
+            const recipient = "abdullrahmaneissa6@gmail.com";
+            
+            // For demo, just show success message with Google Classroom code
+            alert('Thank you for registering! Your Google Classroom access code is: bkfbshq');
         });
     </script>
 </body>
