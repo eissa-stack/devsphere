@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevSphere Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+            --success-color: #2ECC71;
+            --warning-color: #F1C40F;
+            --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* General Animations */
+        .animate-hover {
+            transition: all 0.3s var(--timing-function);
+        }
+
+        .card-hover {
+            transition: all 0.3s var(--timing-function);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s var(--timing-function);
+        }
+
+        .modal.active {
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            width: 90%;
+            max-width: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
+            opacity: 0;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s var(--timing-function);
+        }
+
+        .modal.active .modal-content {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+
+        /* Enhanced Step Design */
+        .step {
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            background: #f8fafc;
+            border-left: 4px solid var(--secondary-color);
+            transition: transform 0.2s var(--timing-function);
+        }
+
+        .step:hover {
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+            box-shadow: 0 4px 6px rgba(52, 152, 219, 0.2);
+        }
+
+        /* Guarantee Badge */
+        .guarantee {
+            margin-top: 24px;
+            padding: 20px;
+            background: linear-gradient(145deg, #e8f5e9, #f1f8e9);
+            border-radius: 12px;
+            border-left: 4px solid var(--success-color);
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="text-2xl font-bold text-gray-800 hover:text-blue-500 transition-colors">DevSphere</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#courses" class="nav-link text-gray-600 hover:text-gray-900">Courses</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-900">About</a>
+                    <a href="https://discord.gg/devsphere" class="nav-link text-gray-600 hover:text-gray-900">Community</a>
+                    <a href="https://www.linkedin.com/in/abdullrahman-eissa" target="_blank" 
+                       class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-all duration-300">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal Container -->
+    <div id="enrollmentModal" class="modal">
+        <!-- Modal content will be inserted here by JavaScript -->
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 animate__animated animate__fadeInDown">
+                    Master DevOps & Cloud Technologies
+                </h1>
+                <p class="text-xl text-blue-100 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                    Professional training programs designed by industry experts
+                </p>
+                <a href="#courses" 
+                   class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg animate__animated animate__fadeInUp animate__delay-2s">
+                    View Courses
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Courses Section -->
+    <section id="courses" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Professional Courses</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- DevOps Course -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">DevOps Fundamentals</h3>
+                        <p class="text-gray-600 mb-6">Start your DevOps journey with core concepts and practical skills.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                CI/CD Pipeline Basics
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Docker & Containers
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Git Version Control
+                            </li>
+                        </ul>
+                        <div class="text-center mt-6">
+                            <p class="text-2xl font-bold text-green-500 mb-3">FREE</p>
+                            <button onclick="showFreeModal()" 
+                                    class="w-full bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
+                                Get Access
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RHCSA Course -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">RHCSA Certification (EX200)</h3>
+                        <p class="text-gray-600 mb-6">Complete preparation for Red Hat Certified System Administrator.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                System Administration
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Practice Labs
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Mock Exams
+                            </li>
+                        </ul>
+                        <div class="text-center mt-6">
+                            <p class="text-2xl font-bold text-gray-700 mb-3">300 EGP</p>
+                            <button onclick="showPaidModal('RHCSA')" 
+                                    class="w-full bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-all duration-300 transform hover:-translate-y-1">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AWS Course -->
+                <div class="course-card bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-4">AWS Cloud Practitioner (CLF-C02)</h3>
+                        <p class="text-gray-600 mb-6">Comprehensive preparation for AWS Cloud Practitioner certification.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Cloud Concepts
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                AWS Services
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Practice Tests
+                            </li>
+                        </ul>
+                        <div class="text-center mt-6">
+                            <p class="text-2xl font-bold text-gray-700 mb-3">300 EGP</p>
+                            <button onclick="showPaidModal('AWS')" 
+                                    class="w-full bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-all duration-300 transform hover:-translate-y-1">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">About DevSphere Academy</h2>
+            <div class="max-w-3xl mx-auto text-gray-600">
+                <p class="mb-6">
+                    DevSphere Academy is founded by experienced DevOps Engineers and System Administrators 
+                    with RHCSA certification. Our mission is to provide high-quality, practical IT training 
+                    that bridges the gap between theory and real-world implementation.
+                </p>
+                <p class="mb-6">
+                    Our courses are designed to help you master modern technologies and prepare for 
+                    professional certifications. Join our growing community of IT professionals and 
+                    start your journey today.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">Connect with our community:</p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://discord.gg/devsphere" class="hover:text-white">Discord</a>
+                <a href="https://www.linkedin.com/in/abdullrahman-eissa" class="hover:text-white">LinkedIn</a>
+            </div>
+            <p>DevSphere © 2025-2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        function showFreeModal() {
+            window.location.href = "https://wa.me/01011188117?text=I'm interested in the free DevOps Fundamentals course";
+        }
+
+        function showPaidModal(course) {
+            const modal = document.getElementById('enrollmentModal');
+            
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <div class="flex justify-between items-center mb-5 pb-3 border-b">
+                        <h2 class="text-2xl font-bold text-gray-800">${course} Course Enrollment</h2>
+                        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">1</span>
+                        <strong>Send Payment</strong><br>
+                        Vodafone Cash: 01011188117<br>
+                        Amount: 300 EGP
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <strong>Send Confirmation</strong><br>
+                        Take a screenshot of your payment and send it via WhatsApp
+                    </div>
+
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <strong>Get Access</strong><br>
+                        You'll receive:
+                        <ul class="ml-5 mt-2">
+                            <li>• Google Classroom code</li>
+                            <li>• Discord community invite</li>
+                            <li>• Course materials access</li>
+                        </ul>
+                    </div>
+
+                    <div class="guarantee">
+                        <strong>60-Day Money-Back Guarantee</strong><br>
+                        If you're not satisfied with the course, we offer a full refund within 60 days of enrollment. No questions asked!
+                    </div>
+
+                    <div class="mt-6 text-center">
+                        <a href="https://wa.me/01011188117" 
+                           class="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-all duration-300">
+                            Continue to WhatsApp
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => modal.classList.add('active'), 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('enrollmentModal');
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('enrollmentModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menu = document.querySelector('.mobile-menu');
+            const menuButton = document.querySelector('#mobileMenuButton');
+            
+            if (menuButton && menu) {
+                menuButton.addEventListener('click', () => {
+                    menu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
